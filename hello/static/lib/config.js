@@ -1,0 +1,2 @@
+/*! static - v0.0.0 - 20141120 */
+!function(a,b,c){"use strict";function d(a,b,d){return a+(-1===a.indexOf("?")?"?":"&")+b+(d!==c?"="+d:"")}if(b){var e,f="0.0.0",g=b.development=a.location.search.indexOf("development")>0,h=[];g?(e=(new Date).getTime(),h.push(function(a){return d(a.replace("/dist/","/"),"_ts",e)})):h.push(function(a){return d(a,"_v",f)}),b.config({base:"/static",alias:{$:"lib/jquery/jquery"},map:h})}}(this,this.seajs);
