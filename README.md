@@ -11,16 +11,16 @@
     server {
       listen       80;
       server_name  hello.local;
-    
+
       charset utf-8;
-    
+
       location / {
         root        E:/codes/examples/hello;
         index       index.html index.htm;
       }
-    
+
       # 反向代理 cmd-wrap 服务
-      location ~ /static/(?<dir>app|mod)/(?<url>.*)$ {
+      location ~ ^/static/(?<dir>app|mod|spm_modules)/(?<url>.*)$ {
         proxy_pass    http://127.0.0.1:8000/static/$dir/$url;
       }
     }
@@ -58,3 +58,8 @@
     seajs.use('dist/app/index/index');
     seajs.use('dist/app/about/index');
     ```
+
+## 注意
+
+－ 禁止使用 `require(directory)`，虽然 spm 3 支持。
+

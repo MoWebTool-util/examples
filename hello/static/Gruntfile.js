@@ -56,7 +56,8 @@ module.exports = function(grunt) {
     },
 
     exec: {
-      'spm-build': 'spm build --include all --ignore $ --idleading dist --output-directory ./'
+      // 'spm-build': 'spm build --include all --ignore $ --idleading {{name}}'
+      'spm-build': 'spm build'
     },
 
     sass: {
@@ -79,7 +80,8 @@ module.exports = function(grunt) {
       config: {
         options: {
           process: function(content/*, srcpath*/) {
-            return content.replace('@VERSION', pkg.version);
+            return content.replace('@APPNAME', pkg.name)
+                          .replace('@VERSION', pkg.version);
           }
         },
         files: [{

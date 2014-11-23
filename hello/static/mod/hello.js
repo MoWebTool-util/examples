@@ -1,7 +1,9 @@
 'use strict';
 
-var $ = require('$');
+var Dialog = require('arale-dialog');
 
 module.exports = function(message) {
-  $('body').append($('<p/>').text('hellow ' + message + '!'));
+  new Dialog({
+    content: 'hellow ' + message + '!'
+  }).show();
 };
