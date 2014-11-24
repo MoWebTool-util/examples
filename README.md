@@ -52,14 +52,7 @@
 
 - `app/**/*.js`
 
-    > 直接引入构建后的地址
-
     ```javascript
-    seajs.use('dist/app/index/index');
-    seajs.use('dist/app/about/index');
+    seajs.use('static/app/index/index');
+    seajs.use('static/app/about/index');
     ```
-
-## 注意
-
-－ 禁止使用 `require(directory)`，虽然 spm 3 支持。
-

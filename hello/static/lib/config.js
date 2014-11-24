@@ -39,30 +39,29 @@
   seajs.config({
     base: '/',
     alias: {
-      'arale-base': appname + '/spm_modules/arale-base/1.2.0/base',
-      'arale-class': appname + '/spm_modules/arale-class/1.2.0/class',
-      'arale-dialog': appname + '/spm_modules/arale-dialog/1.4.0/dialog',
-      'arale-easing': appname + '/spm_modules/arale-easing/1.1.0/easing',
-      'arale-events': appname + '/spm_modules/arale-events/1.2.0/events',
-      'arale-iframe-shim': appname + '/spm_modules/arale-iframe-shim/1.1.0/index',
-      'arale-overlay': appname + '/spm_modules/arale-overlay/1.2.0/overlay',
-      'arale-templatable': appname + '/spm_modules/arale-templatable/0.10.0/src/templatable',
-      'arale-widget': appname + '/spm_modules/arale-widget/1.2.0/widget',
-      'handlebars': appname + '/spm_modules/handlebars/1.3.0/dist/cjs/handlebars',
-      'handlebars-runtime': appname + '/spm_modules/handlebars-runtime/1.3.0/dist/cjs/handlebars.runtime',
-      'position': appname + '/spm_modules/position/1.1.0/index',
-      'seajs-debug': appname + '/lib/seajs/seajs-debug/seajs-debug',
-      'seajs-style': appname + '/lib/seajs/seajs-style/seajs-style',
-      'seajs-text': appname + '/lib/seajs/seajs-text/seajs-text',
-      'seajs-wrap': appname + '/lib/seajs/seajs-wrap/seajs-wrap',
-      'jquery': appname + '/lib/jquery/jquery',
+      'arale-base': appname + '/spm_modules/arale-base/1.2.0/base.js',
+      'arale-class': appname + '/spm_modules/arale-class/1.2.0/class.js',
+      'arale-dialog': appname + '/spm_modules/arale-dialog/1.4.0/dialog.js',
+      'arale-easing': appname + '/spm_modules/arale-easing/1.1.0/index.js',
+      'arale-events': appname + '/spm_modules/arale-events/1.2.0/events.js',
+      'arale-iframe-shim': appname + '/spm_modules/arale-iframe-shim/1.1.0/index.js',
+      'arale-overlay': appname + '/spm_modules/arale-overlay/1.2.0/overlay.js',
+      'arale-templatable': appname + '/spm_modules/arale-templatable/0.10.0/src/templatable.js',
+      'arale-widget': appname + '/spm_modules/arale-widget/1.2.0/widget.js',
+      'handlebars': appname + '/spm_modules/handlebars/1.3.0/dist/cjs/handlebars.js',
+      'handlebars-runtime': appname + '/spm_modules/handlebars-runtime/1.3.0/dist/cjs/handlebars.runtime.js',
+      'jquery': appname + '/spm_modules/jquery/1.11.1/jquery.js',
+      'position': appname + '/spm_modules/position/1.1.0/index.js',
+      'seajs': appname + '/spm_modules/seajs/2.3.0/./dist/sea.js',
+      'seajs-debug': appname + '/spm_modules/seajs-debug/1.1.1/dist/seajs-debug.js',
+      'seajs-style': appname + '/spm_modules/seajs-style/1.1.0/dist/seajs-style.js',
       '$': appname + '/lib/jquery/jquery'
     },
     map: map
   });
 
-  if (seajs.development) {
-    seajs.use(['seajs-style', 'seajs-debug', 'seajs-text']);
-  }
+  // if (seajs.development) {
+  //   seajs.use(['seajs-style', 'seajs-debug', 'seajs-text']);
+  // }
 
 })(this, this.seajs);

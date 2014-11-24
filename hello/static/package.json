@@ -22,9 +22,7 @@
   },
   "spm": {
     "main": "app/index/index.js",
-    "output": [
-      "app/**/*.js"
-    ],
+    "output": ["app/**/*.js"],
     "dependencies": {
       "seajs": "2.3.0",
       "jquery": "1.11.1",
@@ -35,6 +33,6 @@
       "seajs-debug": "1.1.1",
       "seajs-style": "1.1.0"
     },
-    "buildArgs": "--include all --ignore $ --idleading {{name}}"
+    "buildArgs": "--include all --ignore jquery --idleading {{name}}"
   }
 }
