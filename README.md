@@ -3,6 +3,10 @@
   > 项目基础结构样板
 
 
+1. [hello](#hello)
+2. [module](#hello)
+
+
 ## hello
 
 - Nginx
@@ -55,4 +59,19 @@
     ```javascript
     seajs.use('static/app/index/index');
     seajs.use('static/app/about/index');
+    ```
+
+
+## module
+
+- Develop
+
+    ```bash
+    $ grunt
+    ```
+
+- Publish
+
+    ```bash
+    $ grunt publish
     ```

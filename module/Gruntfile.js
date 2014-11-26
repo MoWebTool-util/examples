@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     },
 
     exec: {
-      'spm-doc-watch': 'spm doc watch',
+      'spm-doc-watch': 'spm doc watch --port 8080',
       'spm-doc-publish': 'spm doc publish',
       'spm-publish': 'spm publish',
       'spm-test': 'spm test'
