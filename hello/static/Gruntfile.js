@@ -20,6 +20,7 @@ module.exports = function(grunt) {
       var version = fs.readdirSync(path.join(root, dest))[0];
       var spmmain = fs.readFileSync(path.join(root, dest, version, 'package.json'));
 
+      // 移除多余的 `./`
       spmmain = JSON.parse(spmmain).spm.main.replace(/^\.\//, '');
 
       alias.push('\'' + dest + '\': \'' + prefix + '/' + root + '/' + dest + '/' + version + '/' + spmmain + '\'');

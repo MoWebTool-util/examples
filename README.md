@@ -3,8 +3,8 @@
   > 项目基础结构样板
 
 
-1. [hello](#hello)
-2. [module](#hello)
+1. [项目样例 - hello](#hello)
+2. [组件样例 - module](#module)
 
 
 ## hello
