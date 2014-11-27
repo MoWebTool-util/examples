@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="urf-8" />
+  <meta charset="utf-8" />
   <title>about - hello</title>
 </head>
+
 <body>
-<a href="index.html">index</a>
-<a href="about.html?development">debug</a>
-<script src="static/lib/seajs/sea.js"></script>
-<script src="static/lib/config.js"></script>
-<script>
+  <ul>
+    <li>
+      <a href="index.html">index</a>
+      <a href="index.html?debug">index?debug</a>
+    </li>
+    <li>
+      <a href="about.html">about</a>
+      <a href="about.html?debug">about?debug</a>
+    </li>
+  </ul>
+  <script src="static/lib/seajs/sea.js"></script>
+  <script src="static/lib/config.js"></script>
+  <script>
   seajs.use('static/app/about/index');
-</script>
+  </script>
 </body>
+
 </html>
