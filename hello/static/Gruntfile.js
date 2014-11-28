@@ -16,6 +16,12 @@ module.exports = function(grunt) {
 
     var alias = [];
 
+    if (prefix) {
+      prefix += '/';
+    } else {
+      prefix = '';
+    }
+
     fs.readdirSync(root).forEach(function(dest) {
       var version = fs.readdirSync(path.join(root, dest))[0];
       var spmmain = fs.readFileSync(path.join(root, dest, version, 'package.json'));
@@ -23,7 +29,7 @@ module.exports = function(grunt) {
       // 移除多余的 `./`
       spmmain = JSON.parse(spmmain).spm.main.replace(/^\.\//, '');
 
-      alias.push('\'' + dest + '\': \'' + prefix + '/' + root + '/' + dest + '/' + version + '/' + spmmain + '\'');
+      alias.push('\'' + dest + '\': \'' + prefix + root + '/' + dest + '/' + version + '/' + spmmain + '\'');
     });
 
     return alias.join(',\n      ');
@@ -41,11 +47,13 @@ module.exports = function(grunt) {
 
     pkg: pkg,
 
-    'cmd-wrap': {
-      proxy: {
-        dest: '',
-        port: 8000,
-        pref: '/static'
+    wrap: {
+      server: {
+        base: '..',
+        port: 8080,
+        wrap: function(url) {
+          return /\/(((app|mod|spm_modules).+)|index)\.js$/.test(url);
+        }
       }
     },
 
@@ -156,7 +164,8 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['build-themes', 'build-app', 'build-lib']);
   grunt.registerTask('doc', ['jsdoc']);
 
-  grunt.registerTask('proxy', ['cmd-wrap']);
+  grunt.registerTask('server', ['copy', 'wrap']);
+
   grunt.registerTask('default', ['test', 'build', 'doc']);
 
 };

@@ -1,6 +1,6 @@
 # examples
 
-  > 项目基础结构样板
+  > 项目基础结构样例
 
 
 1. [项目样例 - hello](#hello)
@@ -9,68 +9,53 @@
 
 ## hello
 
-- Nginx
+`<package.name>` === package.json 中的 name === package.json 所在的目录名
 
-    ```conf
-    server {
-      listen       80;
-      server_name  hello.local;
-
-      charset utf-8;
-
-      location / {
-        root        E:/codes/examples/hello;
-        index       index.html index.htm;
-      }
-
-      # 反向代理 cmd-wrap 服务
-      location ~ ^/static/(?<dir>app|mod|spm_modules)/(?<url>.*)$ {
-        proxy_pass    http://127.0.0.1:8000/static/$dir/$url;
-      }
-    }
-    ```
-
-- Build
+- 项目构建
 
     ```bash
-    $ grunt
+    $ grunt build
     ```
 
-- Proxy
+    构建后的 app 文件存放于 dist 目录，css 文件存放于 themes/default/css 目录
+
+- 调试服务器
 
     ```bash
-    $ grunt proxy
+    $ grunt server
     ```
+
+    浏览器中访问 http://127.0.0.1:8080
 
 - `sea.js`
 
     ```html
-    <script src="static/lib/seajs/sea.js"></script>
+    <script src="<package.name>/lib/seajs/sea.js"></script>
     ```
 
 - `config.js`
 
     ```html
-    <script src="static/lib/config.js"></script>
+    <script src="<package.name>/lib/config.js"></script>
     ```
 
 - `app/**/*.js`
 
     ```javascript
-    seajs.use('static/app/index/index');
-    seajs.use('static/app/about/index');
+    seajs.use('<package.name>/app/index/index');
+    seajs.use('<package.name>/app/about/index');
     ```
 
 
 ## module
 
-- Develop
+- 调试服务器
 
     ```bash
-    $ grunt
+    $ grunt server
     ```
 
-- Publish
+- 发布组件
 
     ```bash
     $ grunt publish
