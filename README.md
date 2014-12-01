@@ -5,6 +5,7 @@
 
 1. [项目样例 - hello](#hello)
 2. [组件样例 - module](#module)
+3. [项目样例 - slider](#slider)
 
 
 ## hello
@@ -60,3 +61,8 @@
     ```bash
     $ grunt publish
     ```
+
+
+## slider
+
+参见 [hello](#hello)
