@@ -1,0 +1,2 @@
+/*! static - v0.0.0 - 20141201 */
+!function(a,b,c){"use strict";function d(a,b,d){return a+(-1===a.indexOf("?")?"?":"&")+b+(d!==c?"="+d:"")}if(b){var e=a.location.search.indexOf("debug")>0,f=[];if(e){var g=(new Date).getTime();f.push(function(a){return d(a,"_ts",g)})}else f.push(function(a){return d(a.replace("/app/","/dist/static/app/"),"_v","0.0.0")});b.config({base:"/",alias:{jquery:"static/spm_modules/jquery/1.11.1/jquery.js","nd-slider":"static/spm_modules/nd-slider/0.0.1/index.js"},map:f,debug:e})}}(this,this.seajs);
