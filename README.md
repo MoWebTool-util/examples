@@ -8,7 +8,7 @@
 3. [项目样例 - slider](#slider)
 
 
-1. hello
+## hello
 
 > `<package.name>` 为 package.json 中的 name，亦即 package.json 所在的目录名。
 
