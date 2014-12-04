@@ -1,6 +1,6 @@
 # examples
 
-  > 项目基础结构样例
+  > 项目样例
 
 
 1. [项目样例 - hello](#hello)
@@ -8,9 +8,9 @@
 3. [项目样例 - slider](#slider)
 
 
-## hello
+1. hello
 
-`<package.name>` === package.json 中的 name === package.json 所在的目录名
+> `<package.name>` 为 package.json 中的 name，亦即 package.json 所在的目录名。
 
 - 项目构建
 
