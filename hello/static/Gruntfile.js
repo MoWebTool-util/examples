@@ -22,11 +22,7 @@ module.exports = function(grunt) {
 
     wrap: {
       server: {
-        base: '..',
-        port: 8080,
-        wrap: function(url) {
-          return /\/(((app|mod|spm_modules).+)|index)\.js$/.test(url);
-        }
+        base: '..'
       }
     },
 

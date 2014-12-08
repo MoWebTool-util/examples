@@ -1,2 +1,44 @@
-/*! static - v0.0.0 - 20141201 */
-!function(a,b,c){"use strict";function d(a,b,d){return a+(-1===a.indexOf("?")?"?":"&")+b+(d!==c?"="+d:"")}if(b){var e=a.location.search.indexOf("debug")>0,f=[];if(e){var g=(new Date).getTime();f.push(function(a){return d(a,"_ts",g)})}else f.push(function(a){return d(a.replace("/app/","/dist/static/app/"),"_v","0.0.0")});b.config({base:"/",alias:{jquery:"static/spm_modules/jquery/1.11.1/jquery.js","nd-slider":"static/spm_modules/nd-slider/0.0.1/index.js"},map:f,debug:e})}}(this,this.seajs);
+(function(window, seajs, undefined) {
+
+  'use strict';
+
+  if (!seajs) {
+    return;
+  }
+
+  // debug 开关
+  var debug = window.location.search.indexOf('debug') > 0;
+
+  // 映射表
+  var map = [];
+
+  function addParam(url, name, value) {
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + name + (value !== undefined ? ('=' + value) : '');
+  }
+
+  if (debug) {
+    // 开发模式
+    var timestamp = new Date().getTime();
+    map.push(function(url) {
+      return addParam(url, '_ts', timestamp);
+    });
+  } else {
+    // 部署模式
+    map.push(function(url) {
+      // 仅重定向 app 目录
+      return addParam(url.replace('/app/', '/dist/static/app/'), '_v', '0.0.0');
+    });
+  }
+
+  seajs.config({
+    base: '/',
+    alias: {},
+    map: map,
+    debug: debug
+  });
+
+  // if (debug) {
+  //   seajs.use(['seajs-style', 'seajs-debug', 'seajs-text']);
+  // }
+
+})(this, this.seajs);
