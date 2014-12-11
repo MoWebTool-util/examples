@@ -20,9 +20,20 @@ module.exports = function(grunt) {
 
     pkg: pkg,
 
-    wrap: {
-      server: {
-        base: '..'
+    server: {
+      // 开发环境
+      develop: {
+        options: {
+          // 指向上级目录
+          base: '..'
+        }
+      },
+      // 仿真线上环境
+      release: {
+        options: {
+          base: '..',
+          release: true
+        }
       }
     },
 
@@ -30,12 +41,8 @@ module.exports = function(grunt) {
       options: {
         jshintrc: true
       },
-      app: {
-        files: ['app/**/*.js']
-      },
-      mod: {
-        files: ['mod/**/*.js']
-      }
+      app: ['app/**/*.js'],
+      mod: ['mod/**/*.js']
     },
 
     jsdoc: {
@@ -73,24 +80,6 @@ module.exports = function(grunt) {
       }
     },
 
-    copy: {
-      config: {
-        options: {
-          process: function(content /*, srcpath*/ ) {
-            return content.replace(/@APPNAME/g, pkg.name)
-              .replace(/@VERSION/g, pkg.version);
-          }
-        },
-        files: [{
-          expand: true,
-          cwd: 'lib',
-          src: ['config.js.tpl'],
-          dest: 'lib',
-          ext: '.js'
-        }]
-      }
-    },
-
     uglify: {
       options: {
         // remove HH:MM:ss
@@ -106,19 +95,15 @@ module.exports = function(grunt) {
         }
       },
       config: {
-        files: [{
-          expand: true,
-          cwd: 'lib',
-          src: ['config.js'],
-          dest: 'lib',
-          ext: '.js'
-        }]
+        files: {
+          'lib/config.js': 'lib/config.js'
+        }
       }
     },
 
     clean: {
       themes: {
-        src: ['themes/css']
+        src: ['themes/default/css']
       }
     }
 
@@ -126,13 +111,14 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build-themes', ['clean', 'sass']);
   grunt.registerTask('build-app', ['exec']);
-  grunt.registerTask('build-lib', ['copy', 'uglify']);
+  grunt.registerTask('build-lib', ['uglify']);
 
   grunt.registerTask('test', ['jshint']);
   grunt.registerTask('build', ['build-themes', 'build-app', 'build-lib']);
   grunt.registerTask('doc', ['jsdoc']);
 
-  grunt.registerTask('server', ['copy', 'wrap']);
+  grunt.registerTask('develop', ['server:develop']);
+  grunt.registerTask('release', ['server:release']);
 
   grunt.registerTask('default', ['test', 'build', 'doc']);
 

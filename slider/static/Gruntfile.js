@@ -1,7 +1,7 @@
 /**
  * Description: Gruntfile.js
  * Author: crossjs <liwenfu@crossjs.com>
- * Date: 2014-12-01 13:21:02
+ * Date: 2014-11-17 16:57:40
  */
 
 module.exports = function(grunt) {
@@ -20,9 +20,20 @@ module.exports = function(grunt) {
 
     pkg: pkg,
 
-    wrap: {
-      server: {
-        base: '..'
+    server: {
+      // 开发环境
+      develop: {
+        options: {
+          // 指向上级目录
+          base: '..'
+        }
+      },
+      // 仿真线上环境
+      release: {
+        options: {
+          base: '..',
+          release: true
+        }
       }
     },
 
@@ -34,20 +45,19 @@ module.exports = function(grunt) {
       mod: ['mod/**/*.js']
     },
 
-    jsdoc : {
-      app : {
+    jsdoc: {
+      app: {
         src: ['app/**/*.js'],
         options: {
           destination: 'doc/app'
         }
+      },
+      mod: {
+        src: ['mod/**/*.js'],
+        options: {
+          destination: 'doc/mod'
+        }
       }
-      // ,
-      // mod : {
-      //   src: ['mod/**/*.js'],
-      //   options: {
-      //     destination: 'doc/mod'
-      //   }
-      // }
     },
 
     exec: {
@@ -57,34 +67,15 @@ module.exports = function(grunt) {
     sass: {
       themes: {
         options: {
-          compass: true,
           // nested, compact, compressed, expanded
           style: 'compressed'
         },
         files: [{
           expand: true,
-          cwd: 'themes/default/scss',
+          cwd: 'themes/scss',
           src: ['**/*.scss'],
-          dest: 'themes/default/css',
+          dest: 'themes/css',
           ext: '.css'
-        }]
-      }
-    },
-
-    copy: {
-      config: {
-        options: {
-          process: function (content/*, srcpath*/) {
-            return content.replace(/@APPNAME/g, pkg.name)
-              .replace(/@VERSION/g, pkg.version);
-          }
-        },
-        files: [{
-          expand: true,
-          cwd: 'lib',
-          src: ['config.js.tpl'],
-          dest: 'lib',
-          ext: '.js'
         }]
       }
     },
@@ -104,13 +95,9 @@ module.exports = function(grunt) {
         }
       },
       config: {
-        files: [{
-          expand: true,
-          cwd: 'lib',
-          src: ['config.js'],
-          dest: 'lib',
-          ext: '.js'
-        }]
+        files: {
+          'lib/config.js': 'lib/config.js'
+        }
       }
     },
 
@@ -124,13 +111,15 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build-themes', ['clean', 'sass']);
   grunt.registerTask('build-app', ['exec']);
-  grunt.registerTask('build-lib', ['copy', 'uglify']);
+  grunt.registerTask('build-lib', ['uglify']);
 
   grunt.registerTask('test', ['jshint']);
   grunt.registerTask('build', ['build-themes', 'build-app', 'build-lib']);
   grunt.registerTask('doc', ['jsdoc']);
 
-  grunt.registerTask('server', ['copy', 'wrap']);
+  grunt.registerTask('develop', ['server:develop']);
+  grunt.registerTask('release', ['server:release']);
+
   grunt.registerTask('default', ['test', 'build', 'doc']);
 
 };

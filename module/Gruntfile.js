@@ -11,9 +11,12 @@ module.exports = function(grunt) {
 
     pkg: pkg,
 
-    wrap: {
-      server: {
-        // use defaults
+    server: {
+      develop: {
+        options: {
+          config: false,
+          release: false
+        }
       }
     },
 
@@ -34,8 +37,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['jshint','exec:spm-test']);
 
   grunt.registerTask('publish', ['test', 'exec:spm-publish']);
-
-  grunt.registerTask('server', ['wrap']);
 
   grunt.registerTask('default', ['server']);
 

@@ -1,10 +1,13 @@
 'use strict';
 
+var $ = require('jquery');
 var Dialog = require('arale-dialog');
 
 module.exports = function(message) {
-  new Dialog({
-    content: 'hellow ' + message + '!',
-    hasMask: false
-  }).show();
+  $(function() {
+    new Dialog({
+      content: 'hellow ' + message + '!',
+      hasMask: false
+    }).show();
+  });
 };
